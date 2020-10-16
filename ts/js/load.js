@@ -6,16 +6,23 @@ const Maquina_2 = require("./Maquina");
 let allProducts = [];
 let ran = () => { return Math.round((Math.random() * 10)); };
 function load() {
-    //Kit Kat
+    //Kit Kat----------------------------------------
     let prod = new Maquina_1.Product(0, 'Kit Kat', 10, 'Kg');
     let subprd = [
-        new Maquina_2.SubProduct(prod.id, prod.name, 'Pequeño', prod.precio, prod.tipo, 100, ran()),
-        new Maquina_2.SubProduct(prod.id, prod.name, 'Pequeño', prod.precio, prod.tipo, 300, ran()),
-        new Maquina_2.SubProduct(prod.id, prod.name, 'Pequeño', prod.precio, prod.tipo, 600, ran())
+        new Maquina_2.SubProduct(prod.id, prod.name, 'Pequeño', prod.precio, prod.tipo, 0.100, ran()),
+        new Maquina_2.SubProduct(prod.id, prod.name, 'Mediano', prod.precio, prod.tipo, 0.300, ran()),
+        new Maquina_2.SubProduct(prod.id, prod.name, 'Grande', prod.precio, prod.tipo, 0.600, ran())
     ];
     let products = { product: prod, subProduct: subprd };
     allProducts.push(products);
-    //Donuts
-    console.log(allProducts[0]);
+    //Donuts---------------------------------
+    prod = new Maquina_1.Product(0, 'Donuts', 9.95, 'Kg');
+    subprd = [
+        new Maquina_2.SubProduct(prod.id, prod.name, 'Pequeño', prod.precio, prod.tipo, 0.300, ran()),
+        new Maquina_2.SubProduct(prod.id, prod.name, 'Mediano', prod.precio, prod.tipo, 0.600, ran()),
+        new Maquina_2.SubProduct(prod.id, prod.name, 'Grande', prod.precio, prod.tipo, 1, ran())
+    ];
+    products = { product: prod, subProduct: subprd };
+    allProducts.push(products);
 }
 exports.load = load;
