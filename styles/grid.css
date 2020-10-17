@@ -1,0 +1,191 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+  justify-content: center;
+  display: grid;
+  width: 80%;
+  height: auto;
+  margin: auto;
+  margin-top: 5em;
+
+  grid-template-areas:
+    "a b c"
+    "d e f"
+    "g h i"
+    "j k l"
+    "m m m";
+  grid-template-columns: 15em 15em 15em;
+  grid-template-rows: 22em 22em 22em 22em 22em;
+}
+
+.item-0 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: a;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-1 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: b;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-2 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: c;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-3 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: d;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-4 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: e;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-5 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: f;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-6 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: g;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-7 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: h;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-8 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: i;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-9 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: j;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-10 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: k;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.item-11 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  grid-area: l;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  width: 95%;
+  height: 95%;
+}
+
+.finally {
+  display: flex;
+  width: 95%;
+  height: 95%;
+  grid-area: m;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  margin: 1em;
+  background-color: rgb(230, 230, 230);
+}
