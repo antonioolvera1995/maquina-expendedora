@@ -27,6 +27,8 @@ class SubProduct extends Product {
     priceCalc() {
         let subPrecio;
         subPrecio = this.precio * this.peso;
+        subPrecio = Math.round(subPrecio * 100);
+        subPrecio = subPrecio / 100;
         return subPrecio;
     }
 }
@@ -137,7 +139,7 @@ let money = 30;
 let hour = { horas: 8, minutos: 0 };
 const percentageError = 10;
 let products = load();
-function checkCard() {
+function checkCard(id, id2) {
     let blockCard = false;
     let card = {
         name: "Antonio",
@@ -172,7 +174,7 @@ function checkCard() {
         console.log("Por favor, rellene el campo nombre");
     }
     if (!blockCard) {
-        checkProduct(0, 0);
+        checkProduct(id, id2);
     }
 }
 function connectionIssues() {
@@ -248,11 +250,17 @@ function sellProduct(produc) {
     else {
         money = money - produc.subPrecio;
         products[produc.id].subProduct[produc.id2].stock -= 1;
-        sold();
+        sold(produc);
     }
 }
-function sold() {
+function sold(produc) {
     console.log("Producto vendido con éxito, gracias por su compra.");
+    let id3;
+    let stock;
+    let valu = produc.id;
+    id3 = document.getElementById(`select-${valu}`);
+    stock = document.getElementById(`stock-${valu}`);
+    stock.textContent = `Stock: ${products[Number(valu)].subProduct[Number(produc.id2)].stock}`;
 }
 function loadingHtml() {
     let contenido = "";
@@ -264,21 +272,26 @@ function loadingHtml() {
     </div>
     <div class="img"><img id="img-${i}" src="./img/img-${i}.jpg" alt=""></div>
     <div class="bt" id="bt-${i}" value="${i}">
-        <p>COMPRAR</p>
+        <p value="${i}">COMPRAR</p>
     </div>
 
     <div class="select">
-        <select name="size">
-            <option value="0">Pequeño</option>
-            <option value="1">Mediano</option>
-            <option value="2">Grande</option>
+        <select num="${i}" id="select-${i}" name="size">
+            <option value="0">Pequeño ${products[i].subProduct[0].peso} ${products[i].subProduct[0].tipo}</option>
+            <option value="1">Mediano ${products[i].subProduct[1].peso} ${products[i].subProduct[0].tipo}</option>
+            <option value="2">Grande ${products[i].subProduct[2].peso} ${products[i].subProduct[0].tipo}</option>
         </select>
     </div>
+
+    <div class="info" >
+        <p id="stock-${i}">Stock: ${products[i].subProduct[0].stock}</p>
+        <p id="subprecio-${i}">Precio: ${products[i].subProduct[0].priceCalc()}€</p>
+    </div>
+
 </div>`;
         contenido += cont;
     }
-    contenido +=
-        `<div class="finally">
+    contenido += `<div class="finally">
 
    <div class="finally-1"></div>
 </div>`;
@@ -286,6 +299,70 @@ function loadingHtml() {
     main.innerHTML = contenido;
 }
 loadingHtml();
-(_a = document.querySelector('html')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (e) => {
-    console.log(e.composedPath()[1].getAttribute('value'));
+(_a = document.querySelector("html")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", (e) => {
+    let value = e.target.getAttribute("value");
+    let id2;
+    let stock;
+    let subprice;
+    let id3;
+    if (e.target.name == 'size') {
+        let valu = e.target.getAttribute('num');
+        id3 = document.getElementById(`select-${valu}`);
+        stock = document.getElementById(`stock-${valu}`);
+        subprice = document.getElementById(`subprecio-${valu}`);
+        stock.textContent = `Stock: ${products[Number(valu)].subProduct[Number(id3.value)].stock}`;
+        subprice.textContent = `Precio: ${products[Number(valu)].subProduct[Number(id3.value)].priceCalc()}€`;
+    }
+    switch (value) {
+        case "0":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "1":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "2":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "3":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "4":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "5":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "6":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "7":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "8":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "9":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "10":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        case "11":
+            id2 = document.getElementById(`select-${value}`);
+            checkCard(Number(value), Number(id2.value));
+            break;
+        default:
+            break;
+    }
 });

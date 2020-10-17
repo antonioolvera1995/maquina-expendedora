@@ -20,6 +20,8 @@ class SubProduct extends Product {
     priceCalc() {
         let subPrecio;
         subPrecio = this.precio * this.peso;
+        subPrecio = Math.round(subPrecio * 100);
+        subPrecio = subPrecio / 100;
         return subPrecio;
     }
 }

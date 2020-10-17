@@ -36,10 +36,12 @@ export class SubProduct extends Product {
         this.stock = stock;
     }
 
-     public priceCalc():number{
-         let subPrecio:number;
-         subPrecio = this.precio*this.peso;
-         return subPrecio;
-     }
+    public priceCalc(): number {
+        let subPrecio: number;
+        subPrecio = this.precio * this.peso;
+        subPrecio = Math.round(subPrecio*100);
+        subPrecio = subPrecio/100;
+        return subPrecio;
+      }
 
 }

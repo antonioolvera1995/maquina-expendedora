@@ -37,11 +37,15 @@ class SubProduct extends Product {
   public priceCalc(): number {
     let subPrecio: number;
     subPrecio = this.precio * this.peso;
+    subPrecio = Math.round(subPrecio*100);
+    subPrecio = subPrecio/100;
     return subPrecio;
   }
 }
 
-//-------------------------------------------Load----------------------------------------------
+//-------------------------------------------Load-------------------------------------------------------------------------------------------
+//-------------------------------------------Load-------------------------------------------------------------------------------------------
+//-------------------------------------------Load-------------------------------------------------------------------------------------------
 
 let allProductss: Products[] = [];
 let ran = (): number => {
@@ -464,7 +468,9 @@ function load() {
 
   return allProductss;
 }
-//-------------------------------------------Load----------------------------------------------
+//-------------------------------------------Load-----------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------Load-----------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------Load-----------------------------------------------------------------------------------------------------------------------
 
 let money: number = 30;
 let hour = { horas: 8, minutos: 0 }; //crear interface
@@ -490,7 +496,7 @@ interface ActuallProduct {
   stock: number;
 }
 
-function checkCard() {
+function checkCard(id: number, id2: number) {
   let blockCard: boolean = false;
   let card: Card = {
     name: "Antonio",
@@ -530,7 +536,7 @@ function checkCard() {
 
   //Cambiar numero por id original
   if (!blockCard) {
-    checkProduct(0, 0);
+    checkProduct(id, id2);
   }
 }
 
@@ -610,15 +616,25 @@ function sellProduct(produc: ActuallProduct) {
   } else {
     money = money - produc.subPrecio;
     products[produc.id].subProduct[produc.id2].stock -= 1;
-    sold();
+    sold(produc);
   }
 }
 
-function sold() {
+function sold(produc: ActuallProduct) {
   console.log("Producto vendido con éxito, gracias por su compra.");
+  let id3:HTMLInputElement;
+  let stock:HTMLInputElement;
+ 
+         let valu = produc.id;
+         id3 = <HTMLInputElement>document.getElementById(`select-${valu}`);
+         stock = <HTMLInputElement>document.getElementById(`stock-${valu}`);
+         stock.textContent = `Stock: ${products[Number(valu)].subProduct[Number(produc.id2)].stock}`;
+        
+  
+  
+  
+  
 }
-
-
 
 //------------------------------------------------Cargar html----------------------------------------------------------------------------
 
@@ -626,7 +642,6 @@ function loadingHtml() {
   let contenido: string = "";
 
   for (let i = 0; i < products.length; i++) {
-
     let cont: string = ` <div class="item-${i}">
     <div class="title">
         <p class="title-1" id="name-${i}">${products[i].product.name}</p>
@@ -634,39 +649,116 @@ function loadingHtml() {
     </div>
     <div class="img"><img id="img-${i}" src="./img/img-${i}.jpg" alt=""></div>
     <div class="bt" id="bt-${i}" value="${i}">
-        <p>COMPRAR</p>
+        <p value="${i}">COMPRAR</p>
     </div>
 
     <div class="select">
-        <select name="size">
-            <option value="0">Pequeño</option>
-            <option value="1">Mediano</option>
-            <option value="2">Grande</option>
+        <select num="${i}" id="select-${i}" name="size">
+            <option value="0">Pequeño ${products[i].subProduct[0].peso} ${products[i].subProduct[0].tipo}</option>
+            <option value="1">Mediano ${products[i].subProduct[1].peso} ${products[i].subProduct[0].tipo}</option>
+            <option value="2">Grande ${products[i].subProduct[2].peso} ${products[i].subProduct[0].tipo}</option>
         </select>
     </div>
+
+    <div class="info" >
+        <p id="stock-${i}">Stock: ${products[i].subProduct[0].stock}</p>
+        <p id="subprecio-${i}">Precio: ${products[i].subProduct[0].priceCalc()}€</p>
+    </div>
+
 </div>`;
 
     contenido += cont;
   }
 
-  contenido +=
-   `<div class="finally">
+  contenido += `<div class="finally">
 
    <div class="finally-1"></div>
 </div>`;
-
-
 
   let main = document.getElementById("main") as HTMLInputElement;
   main.innerHTML = contenido;
 }
 loadingHtml();
 
+document.querySelector("html")?.addEventListener("click", (e) => {
+  let value = (e.target as Element).getAttribute("value");
+  let id2:HTMLInputElement;
+  let stock:HTMLInputElement;
+  let subprice:HTMLInputElement;
 
-document.querySelector('html')?.addEventListener('click',(e)=>{
+
 
   
-console.log(e.composedPath()[1].getAttribute('value'));
+  let id3:HTMLInputElement;
+if ((<HTMLInputElement>e.target).name == 'size') {
+  
+  let valu = (<HTMLInputElement>e.target).getAttribute('num');
+   id3 = <HTMLInputElement>document.getElementById(`select-${valu}`);
+  
+       stock = <HTMLInputElement>document.getElementById(`stock-${valu}`);
+       subprice = <HTMLInputElement>document.getElementById(`subprecio-${valu}`);
+       stock.textContent = `Stock: ${products[Number(valu)].subProduct[Number(id3.value)].stock}`;
+       subprice.textContent = `Precio: ${products[Number(valu)].subProduct[Number(id3.value)].priceCalc()}€`;
+
+}
 
 
+
+
+
+
+  switch (value) {
+    case "0":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "1":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "2":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "3":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "4":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "5":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "6":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "7":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "8":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "9":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "10":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+    case "11":
+      id2 = <HTMLInputElement>document.getElementById(`select-${value}`);
+      checkCard(Number(value), Number(id2.value));
+      break;
+
+    default:
+      break;
+  }
 });
+
