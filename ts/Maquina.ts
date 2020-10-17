@@ -17,6 +17,7 @@ export class SubProduct extends Product {
     readonly subName: string;
     readonly peso: number;
     public stock: number;
+     
     
 
     constructor(
@@ -34,4 +35,11 @@ export class SubProduct extends Product {
         this.peso = peso;
         this.stock = stock;
     }
+
+     public priceCalc():number{
+         let subPrecio:number;
+         subPrecio = this.precio*this.peso;
+         return subPrecio;
+     }
+
 }

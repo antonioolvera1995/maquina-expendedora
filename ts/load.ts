@@ -23,7 +23,7 @@ export function load(){
       allProducts.push(products);
 
     //Donuts---------------------------------
-     prod = new Product(0,'Donuts', 9.95, 'Kg' );
+     prod = new Product(1,'Donuts', 9.95, 'Kg' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.300, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 0.600, ran()),
@@ -33,7 +33,7 @@ export function load(){
       allProducts.push(products);
 
           //Galletas Oreo---------------------------------
-     prod = new Product(0,'Galletas Oreo', 9.25, 'Kg' );
+     prod = new Product(2,'Galletas Oreo', 9.25, 'Kg' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.200, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 0.500, ran()),
@@ -44,7 +44,7 @@ export function load(){
     
 
           //Chicles Trident---------------------------------
-     prod = new Product(0,'Chicles Trident', 46.90, 'Kg' );
+     prod = new Product(3,'Chicles Trident', 46.90, 'Kg' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.020, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 0.100, ran()),
@@ -54,7 +54,7 @@ export function load(){
       allProducts.push(products);
 
           //Chicles Orbit---------------------------------
-     prod = new Product(0,'Chicles Orbit', 41.02, 'Kg' );
+     prod = new Product(4,'Chicles Orbit', 41.02, 'Kg' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.020, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 0.100, ran()),
@@ -64,7 +64,7 @@ export function load(){
       allProducts.push(products);
 
           //Patatas Lays---------------------------------
-     prod = new Product(0,'Patatas Lays', 9.44, 'Kg' );
+     prod = new Product(5,'Patatas Lays', 9.44, 'Kg' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.160, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 0.200, ran()),
@@ -74,7 +74,7 @@ export function load(){
       allProducts.push(products);
 
           //Doritos---------------------------------
-     prod = new Product(0,'Doritos', 9.32, 'Kg' );
+     prod = new Product(6,'Doritos', 9.32, 'Kg' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.160, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 0.200, ran()),
@@ -84,7 +84,7 @@ export function load(){
       allProducts.push(products);
 
           //Agua de Lanjaron---------------------------------
-     prod = new Product(0,'Agua de Lanjaron', 0.35, 'L' );
+     prod = new Product(7,'Agua de Lanjaron', 0.35, 'L' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.500, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 1.500, ran()),
@@ -94,7 +94,7 @@ export function load(){
       allProducts.push(products);
 
           //Cerveza Mahou---------------------------------
-     prod = new Product(0,'Cerveza Mahou', 2.20, 'L' );
+     prod = new Product(8,'Cerveza Mahou', 2.20, 'L' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.250, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 0.500, ran()),
@@ -104,7 +104,7 @@ export function load(){
       allProducts.push(products);
 
           //Cerveza Heineken---------------------------------
-     prod = new Product(0,'Cerveza Heineken', 2.15, 'L' );
+     prod = new Product(9,'Cerveza Heineken', 2.15, 'L' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.250, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 0.500, ran()),
@@ -114,7 +114,7 @@ export function load(){
       allProducts.push(products);
 
           //Coca Cola---------------------------------
-     prod = new Product(0,'Coca Cola', 0.93, 'L' );
+     prod = new Product(10,'Coca Cola', 0.93, 'L' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.250, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 0.500, ran()),
@@ -124,7 +124,7 @@ export function load(){
       allProducts.push(products);
 
           //Pepsi---------------------------------
-     prod = new Product(0,'Pepsi', 0.85, 'L' );
+     prod = new Product(11,'Pepsi', 0.85, 'L' );
      subprd = [
         new SubProduct(prod.id, prod.name, 'Pequeño',prod.precio, prod.tipo, 0.250, ran()),
         new SubProduct(prod.id, prod.name, 'Mediano',prod.precio, prod.tipo, 0.500, ran()),

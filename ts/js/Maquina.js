@@ -17,5 +17,10 @@ class SubProduct extends Product {
         this.peso = peso;
         this.stock = stock;
     }
+    priceCalc() {
+        let subPrecio;
+        subPrecio = this.precio * this.peso;
+        return subPrecio;
+    }
 }
 exports.SubProduct = SubProduct;
