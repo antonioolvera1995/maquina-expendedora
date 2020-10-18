@@ -476,6 +476,7 @@ let money: number = 30;
 let hour = { horas: 8, minutos: 0 }; //crear interface
 const percentageError: number = 10; // probabilidad de error
 let products = load();
+let carBlockCheck:boolean = false;
 
 interface Card {
   name: string;
@@ -483,6 +484,12 @@ interface Card {
   expiration: string;
   cvv: number;
 }
+let card: Card = {
+  name: "",
+  cardNumber: 1,
+  expiration: "",
+  cvv: 0,
+};
 
 interface ActuallProduct {
   id: number;
@@ -497,47 +504,10 @@ interface ActuallProduct {
 }
 
 function checkCard(id: number, id2: number) {
-  let blockCard: boolean = false;
-  let card: Card = {
-    name: "Antonio",
-    cardNumber: 1234567891234567,
-    expiration: "16/24",
-    cvv: 123,
-  };
+  if (carBlockCheck) {
+ checkProduct(id, id2);
+}else{alert('Verifica la tarjeta de crédito');}
 
-  if (card.name.length > 0) {
-    if (
-      card.cardNumber > 999999999999999 &&
-      card.cardNumber < 9999999999999999
-    ) {
-      if (card.expiration.length == 5) {
-        if (card.cvv > 99 && card.cvv < 999) {
-          console.log("Tarjeta Aceptada con exito");
-        } else {
-          blockCard = true;
-          //alert("El número de la tarjeta debe se de 3 dígitos");
-          console.log("El número de la tarjeta debe se de 3 dígitos");
-        }
-      } else {
-        blockCard = true;
-        //alert("Rellene la fecha de caducidad correctamente");
-        console.log("Rellene la fecha de caducidad correctamente");
-      }
-    } else {
-      blockCard = true;
-      //alert("El número de la tarjeta debe se de 16 dígitos");
-      console.log("El número de la tarjeta debe se de 16 dígitos");
-    }
-  } else {
-    blockCard = true;
-    //alert("Por favor, rellene el campo nombre");
-    console.log("Por favor, rellene el campo nombre");
-  }
-
-  //Cambiar numero por id original
-  if (!blockCard) {
-    checkProduct(id, id2);
-  }
 }
 
 function connectionIssues() {
@@ -762,3 +732,99 @@ if ((<HTMLInputElement>e.target).name == 'size') {
   }
 });
 
+
+
+// -------------------------------------Card-----------------------------------------------
+let cardNumb1 = (document.getElementById('number-card') as HTMLInputElement);
+cardNumb1.addEventListener('keyup',()=>{
+
+  if (cardNumb1.value.length > 16) {
+    cardNumb1.value = (cardNumb1.value).substring(0, 16);
+  }
+});
+let cardCvv = (document.getElementById('cvv-card') as HTMLInputElement);
+cardCvv.addEventListener('keyup',()=>{
+
+  if (cardCvv.value.length > 3) {
+    cardCvv.value = (cardCvv.value).substring(0, 3);
+  }
+});
+
+let cardExp = (document.getElementById('expiration-card') as HTMLInputElement);
+cardExp.addEventListener('keyup',()=>{
+  if (cardExp.value.length > 5) {
+    cardExp.value = (cardExp.value).substring(0, 5);
+  }
+
+  if (cardExp.value.length === 5 ||cardExp.value.length === 3) {
+    cardExp.value = (cardExp.value).substring(0, 2)+'-'+(cardExp.value).substring(3, 5);
+  }
+
+});
+
+
+document.getElementById('bt-card')?.addEventListener('click', ()=>{
+
+  
+  let nam: HTMLInputElement = (document.getElementById('name-card') as HTMLInputElement);
+  let num: HTMLInputElement = (document.getElementById('number-card') as HTMLInputElement);
+  let exp: HTMLInputElement = (document.getElementById('expiration-card') as HTMLInputElement);
+  let cvv: HTMLInputElement = (document.getElementById('cvv-card') as HTMLInputElement);
+  
+    carBlockCheck = true;
+    card.name = nam.value;
+    card.cardNumber = Number(num.value);
+    card.expiration = exp.value;
+    card.cvv = Number(cvv.value);
+  
+  
+  let blockCard: boolean = false;
+
+  if (card.name.length > 0) {
+    if (
+      card.cardNumber > 999999999999999 &&
+      card.cardNumber < 9999999999999999
+    ) {
+      if (card.expiration.length == 5) {
+        if (card.cvv > 99 && card.cvv < 999) {
+          console.log("Tarjeta Aceptada con exito");
+
+        } else {
+          blockCard = true;
+          alert("El número de la tarjeta debe se de 3 dígitos");
+        }
+      } else {
+        blockCard = true;
+        alert("Rellene la fecha de caducidad correctamente");
+      }
+    } else {
+      blockCard = true;
+      alert("El número de la tarjeta debe se de 16 dígitos");
+    }
+  } else {
+    blockCard = true;
+    alert("Por favor, rellene el campo nombre");
+  }
+
+  
+  if (!blockCard) {
+   carBlockCheck = true;
+   (document.getElementById('bt-card') as HTMLInputElement).classList.remove('bt2');
+if ((document.getElementById('save') as HTMLInputElement).checked === true) {
+  localStorage.setItem('name', card.name);
+  localStorage.setItem('name', card.expiration);
+  localStorage.setItem('name', card.expiration);
+  localStorage.setItem('name', card.expiration);
+}
+
+  }else{
+    (document.getElementById('bt-card') as HTMLInputElement).classList.add('bt2');
+    carBlockCheck = false;
+  }
+
+
+  
+});
+  
+document.getElementById('save')?.click();
+  
