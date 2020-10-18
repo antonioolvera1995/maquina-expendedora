@@ -589,6 +589,7 @@ function sellProduct(produc: ActuallProduct) {
     sold(produc);
 
     //-----
+   // @ts-ignore
   let last:HTMLIFrameElement = <HTMLInputElement>document.getElementById('finally-1');
   let divMain = document.createElement('div');
   divMain.classList.add('div-finally');
