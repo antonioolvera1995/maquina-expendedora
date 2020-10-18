@@ -579,6 +579,7 @@ async function checkProduct(id: number, id2: number) {
   }
 }
 
+
 function sellProduct(produc: ActuallProduct) {
   if (money < produc.subPrecio) {
     print("Dinero insuficiente, selecciona otro producto");

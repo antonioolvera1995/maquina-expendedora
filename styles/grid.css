@@ -33,6 +33,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-1 {
@@ -46,6 +47,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-2 {
@@ -59,6 +61,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-3 {
@@ -72,6 +75,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-4 {
@@ -85,6 +89,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-5 {
@@ -98,6 +103,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-6 {
@@ -111,6 +117,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-7 {
@@ -124,6 +131,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-8 {
@@ -137,6 +145,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-9 {
@@ -150,6 +159,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-10 {
@@ -163,6 +173,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .item-11 {
@@ -176,6 +187,7 @@
   margin: 1em;
   width: 95%;
   height: 95%;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
 
 .finally {
@@ -188,4 +200,5 @@
   border-radius: 0.5em;
   margin: 1em;
   background-color: rgb(230, 230, 230);
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.45);
 }
