@@ -180,8 +180,8 @@
 
 .finally {
   display: flex;
-  width: 95%;
-  height: 95%;
+  width: 98.5%;
+  height: 60%;
   grid-area: m;
   justify-content: center;
   align-items: center;

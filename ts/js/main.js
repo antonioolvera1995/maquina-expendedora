@@ -230,6 +230,15 @@ function sellProduct(produc) {
         money = money - produc.subPrecio;
         products[produc.id].subProduct[produc.id2].stock -= 1;
         sold(produc);
+        let last = document.getElementById('finally-1');
+        let divMain = document.createElement('div');
+        divMain.classList.add('div-finally');
+        divMain.innerHTML = `  
+   <div class="finally-text"><p>${produc.name}</p></div>
+  <div class="finally-img"><img src="./img/img-${produc.id}.jpg" alt=""></div>`;
+        last.appendChild(divMain);
+        let large = last.scrollWidth;
+        last.scrollLeft = large;
     }
 }
 function sold(produc) {
@@ -279,7 +288,10 @@ function loadingHtml() {
     }
     contenido += `<div class="finally">
 
-   <div class="finally-1"></div>
+   <div class="finally-1" id="finally-1">
+
+
+   </div>
 </div>`;
     let main = document.getElementById("main");
     main.innerHTML = contenido;
