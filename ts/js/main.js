@@ -136,6 +136,7 @@ function load() {
     return allProductss;
 }
 let money = 30;
+;
 let hour = { horas: 8, minutos: 0 };
 const percentageError = 10;
 let products = load();
@@ -238,6 +239,7 @@ function sold(produc) {
     id3 = document.getElementById(`select-${valu}`);
     stock = document.getElementById(`stock-${valu}`);
     stock.textContent = `Stock: ${products[Number(valu)].subProduct[Number(produc.id2)].stock}`;
+    document.getElementById('actu-money').innerText = `Saldo actual ${(Math.round(money * 100)) / 100}€`;
 }
 function loadingHtml() {
     let contenido = "";
@@ -361,7 +363,17 @@ cardExp.addEventListener('keyup', () => {
         cardExp.value = (cardExp.value).substring(0, 5);
     }
     if (cardExp.value.length === 5 || cardExp.value.length === 3) {
-        cardExp.value = (cardExp.value).substring(0, 2) + '-' + (cardExp.value).substring(3, 5);
+        cardExp.value = `${(cardExp.value).substring(0, 2)}-${(cardExp.value).substring(3, 5)}`;
+    }
+    if (cardExp.value.length === 5) {
+        let nu = Number((cardExp.value).substring(3, 5));
+        if (nu < 20) {
+            cardExp.value = `${(cardExp.value).substring(0, 2)}-20`;
+        }
+        let na = Number((cardExp.value).substring(0, 2));
+        if (nu > 12 || nu < 1) {
+            cardExp.value = `01-${(cardExp.value).substring(3, 5)}`;
+        }
     }
 });
 (_b = document.getElementById('bt-card')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
@@ -406,9 +418,9 @@ cardExp.addEventListener('keyup', () => {
         document.getElementById('bt-card').classList.remove('bt2');
         if (document.getElementById('save').checked === true) {
             localStorage.setItem('name', card.name);
-            localStorage.setItem('name', card.expiration);
-            localStorage.setItem('name', card.expiration);
-            localStorage.setItem('name', card.expiration);
+            localStorage.setItem('number', `${card.cardNumber}`);
+            localStorage.setItem('expiration', card.expiration);
+            localStorage.setItem('cvv', `${card.cvv}`);
         }
     }
     else {
@@ -417,3 +429,46 @@ cardExp.addEventListener('keyup', () => {
     }
 });
 (_c = document.getElementById('save')) === null || _c === void 0 ? void 0 : _c.click();
+let lod = () => {
+    var _a;
+    document.getElementById('actu-money').innerText = `Saldo actual ${money}€`;
+    document.getElementById('actu-hour').innerText = `Hora: 0${hour.horas}:0${hour.minutos}`;
+    try {
+        let ver = localStorage.getItem('name');
+        if (ver.length > 0) {
+            document.getElementById('name-card').value = localStorage.getItem('name');
+            document.getElementById('number-card').value = localStorage.getItem('number');
+            document.getElementById('expiration-card').value = localStorage.getItem('expiration');
+            document.getElementById('cvv-card').value = localStorage.getItem('cvv');
+            (_a = document.getElementById('bt-card')) === null || _a === void 0 ? void 0 : _a.click();
+        }
+    }
+    catch (error) {
+    }
+};
+lod();
+setInterval(() => {
+    let hor;
+    let min;
+    hour.minutos++;
+    if (hour.minutos > 60) {
+        hour.horas++;
+        hour.minutos = 0;
+    }
+    if (hour.horas > 23) {
+        hour.horas = 0;
+    }
+    if (hour.minutos < 10) {
+        min = `0${hour.minutos}`;
+    }
+    else {
+        min = `${hour.minutos}`;
+    }
+    if (hour.horas < 10) {
+        hor = `0${hour.horas}`;
+    }
+    else {
+        hor = `${hour.horas}`;
+    }
+    document.getElementById('actu-hour').innerText = `Hora: ${hor}:${min}`;
+}, 100);

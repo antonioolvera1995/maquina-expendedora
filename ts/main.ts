@@ -473,7 +473,8 @@ function load() {
 //-------------------------------------------Load-----------------------------------------------------------------------------------------------------------------------
 
 let money: number = 30;
-let hour = { horas: 8, minutos: 0 }; //crear interface
+interface Hour {horas: number, minutos: number};
+let hour: Hour = { horas: 8, minutos: 0 }; //crear interface
 const percentageError: number = 10; // probabilidad de error
 let products = load();
 let carBlockCheck:boolean = false;
@@ -599,7 +600,7 @@ function sold(produc: ActuallProduct) {
          id3 = <HTMLInputElement>document.getElementById(`select-${valu}`);
          stock = <HTMLInputElement>document.getElementById(`stock-${valu}`);
          stock.textContent = `Stock: ${products[Number(valu)].subProduct[Number(produc.id2)].stock}`;
-        
+         (document.getElementById('actu-money') as HTMLInputElement).innerText = `Saldo actual ${(Math.round(money*100))/100}€`;
   
   
   
@@ -669,7 +670,7 @@ if ((<HTMLInputElement>e.target).name == 'size') {
        subprice = <HTMLInputElement>document.getElementById(`subprecio-${valu}`);
        stock.textContent = `Stock: ${products[Number(valu)].subProduct[Number(id3.value)].stock}`;
        subprice.textContent = `Precio: ${products[Number(valu)].subProduct[Number(id3.value)].priceCalc()}€`;
-
+       
 }
 
 
@@ -757,8 +758,23 @@ cardExp.addEventListener('keyup',()=>{
   }
 
   if (cardExp.value.length === 5 ||cardExp.value.length === 3) {
-    cardExp.value = (cardExp.value).substring(0, 2)+'-'+(cardExp.value).substring(3, 5);
+    cardExp.value = `${(cardExp.value).substring(0, 2)}-${(cardExp.value).substring(3, 5)}`;
   }
+
+  if (cardExp.value.length === 5 ) {
+    let nu = Number((cardExp.value).substring(3,5));
+    if (nu<20) {
+      cardExp.value = `${(cardExp.value).substring(0, 2)}-20`;
+    }
+
+    let na = Number((cardExp.value).substring(0,2));
+    if (nu>12 || nu<1) {
+      cardExp.value = `01-${(cardExp.value).substring(3, 5)}`;
+    }
+
+
+  }
+
 
 });
 
@@ -812,9 +828,9 @@ document.getElementById('bt-card')?.addEventListener('click', ()=>{
    (document.getElementById('bt-card') as HTMLInputElement).classList.remove('bt2');
 if ((document.getElementById('save') as HTMLInputElement).checked === true) {
   localStorage.setItem('name', card.name);
-  localStorage.setItem('name', card.expiration);
-  localStorage.setItem('name', card.expiration);
-  localStorage.setItem('name', card.expiration);
+  localStorage.setItem('number', `${card.cardNumber}`);
+  localStorage.setItem('expiration', card.expiration);
+  localStorage.setItem('cvv', `${card.cvv}`);
 }
 
   }else{
@@ -828,3 +844,52 @@ if ((document.getElementById('save') as HTMLInputElement).checked === true) {
   
 document.getElementById('save')?.click();
   
+let lod =()=>{
+  (document.getElementById('actu-money') as HTMLInputElement).innerText = `Saldo actual ${money}€`;
+  (document.getElementById('actu-hour') as HTMLInputElement).innerText = `Hora: 0${hour.horas}:0${hour.minutos}`;
+  try {
+    let ver:string = localStorage.getItem('name') as string;
+    if (ver.length>0) {
+    (document.getElementById('name-card') as HTMLInputElement).value = localStorage.getItem('name') as string;
+    (document.getElementById('number-card') as HTMLInputElement).value = localStorage.getItem('number') as string;
+    (document.getElementById('expiration-card') as HTMLInputElement).value = localStorage.getItem('expiration') as string;
+    (document.getElementById('cvv-card') as HTMLInputElement).value = localStorage.getItem('cvv') as string;
+
+    document.getElementById('bt-card')?.click();
+  }
+  } catch (error) {
+    
+  }
+
+
+ 
+};lod();
+
+
+// -------------------------Relog--------------------
+  setInterval(() => {
+let hor:string;
+let min:string;
+
+hour.minutos++;
+// -----minutos-----
+if (hour.minutos>60) {
+  hour.horas++;
+  hour.minutos = 0;
+}
+// -----horas-----
+if (hour.horas>23) {
+  hour.horas = 0;
+}
+// --------------------------------
+
+if (hour.minutos < 10) {
+  min = `0${hour.minutos}`;
+}else{min = `${hour.minutos}`;}
+
+if (hour.horas < 10) {
+  hor = `0${hour.horas}`;
+}else{hor = `${hour.horas}`;}
+
+  (document.getElementById('actu-hour') as HTMLInputElement).innerText = `Hora: ${hor}:${min}`;
+  }, 100);
