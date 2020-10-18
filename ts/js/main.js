@@ -178,8 +178,9 @@ function connectionIssues() {
 function checkProduct(id, id2) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            print('Estableciendo conexión');
             let connect = yield connectionIssues();
-            console.log(connect);
+            print(String(connect));
             let actuallProduct = {
                 id: products[id].subProduct[id2].id,
                 id2: id2,
@@ -206,24 +207,24 @@ function checkProduct(id, id2) {
             }
             if (!blockHour) {
                 if (actuallProduct.stock <= 0) {
-                    console.log(`Lo sentimos, nos hemos quedado sin Stock de: ${actuallProduct.name} ${actuallProduct.subName}`);
+                    print(`Lo sentimos, nos hemos quedado sin Stock de: ${actuallProduct.name} ${actuallProduct.subName}`);
                 }
                 else {
                     sellProduct(actuallProduct);
                 }
             }
             else {
-                console.log("Restricciones al consumo de alcohol entre las 22h y las 8h establecidas por el gobierno.");
+                print("Restricciones al consumo de alcohol entre las 22h y las 8h establecidas por el gobierno.");
             }
         }
         catch (error) {
-            console.log(error);
+            print(error);
         }
     });
 }
 function sellProduct(produc) {
     if (money < produc.subPrecio) {
-        console.log("Dinero insuficiente, selecciona otro producto");
+        print("Dinero insuficiente, selecciona otro producto");
     }
     else {
         money = money - produc.subPrecio;
@@ -232,7 +233,7 @@ function sellProduct(produc) {
     }
 }
 function sold(produc) {
-    console.log("Producto vendido con éxito, gracias por su compra.");
+    print("Producto vendido con éxito, gracias por su compra.");
     let id3;
     let stock;
     let valu = produc.id;
@@ -240,6 +241,12 @@ function sold(produc) {
     stock = document.getElementById(`stock-${valu}`);
     stock.textContent = `Stock: ${products[Number(valu)].subProduct[Number(produc.id2)].stock}`;
     document.getElementById('actu-money').innerText = `Saldo actual ${(Math.round(money * 100)) / 100}€`;
+    setTimeout(() => {
+        let elem = (document.querySelectorAll('li'));
+        for (let i = 0; i < elem.length; i++) {
+            elem[i].remove();
+        }
+    }, 5000);
 }
 function loadingHtml() {
     let contenido = "";
@@ -371,7 +378,7 @@ cardExp.addEventListener('keyup', () => {
             cardExp.value = `${(cardExp.value).substring(0, 2)}-20`;
         }
         let na = Number((cardExp.value).substring(0, 2));
-        if (nu > 12 || nu < 1) {
+        if (na > 12 || na < 1) {
             cardExp.value = `01-${(cardExp.value).substring(3, 5)}`;
         }
     }
@@ -392,7 +399,7 @@ cardExp.addEventListener('keyup', () => {
             card.cardNumber < 9999999999999999) {
             if (card.expiration.length == 5) {
                 if (card.cvv > 99 && card.cvv < 999) {
-                    console.log("Tarjeta Aceptada con exito");
+                    print("Tarjeta Aceptada con exito");
                 }
                 else {
                     blockCard = true;
@@ -472,3 +479,19 @@ setInterval(() => {
     }
     document.getElementById('actu-hour').innerText = `Hora: ${hor}:${min}`;
 }, 100);
+setInterval(() => {
+    let elem = (document.querySelectorAll('li'));
+    for (let i = 0; i < elem.length; i++) {
+        if (i > 8) {
+            elem[0].remove();
+        }
+    }
+}, 500);
+function print(text) {
+    let list = document.createElement('li');
+    let te = document.createElement('p');
+    let nod = document.createTextNode(text);
+    te.appendChild(nod);
+    list.appendChild(te);
+    document.getElementById('list').appendChild(list);
+}
